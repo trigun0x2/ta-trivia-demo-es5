@@ -1,0 +1,26 @@
+body{
+  font-family: 'Open Sans', sans-serif;
+}
+/* Trivia Section  */
+.question-cont{
+  display: none;
+}
+
+/* Winner Section  */
+.winner-cont{
+  display: none;
+}
+
+.winner-title{
+  font-weight: bold;
+}
+
+.winner-img{
+  height: 30px;
+  display: inline;
+}
+
+.winner-name{
+  display: inline;
+  margin-left: 5px;
+}

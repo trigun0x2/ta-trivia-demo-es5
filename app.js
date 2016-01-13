@@ -11,25 +11,35 @@ TA.twitch.chat.on('say', function(data){
         question = res[0].question;
         answer   = res[0].answer;
         $(".question-text").text(question);
+        $(".winner-cont").slideUp(function(){
+          $(".question-cont").slideDown();
+        });
         // Announce new trivia
         TA.twitch.chat.say(question);
       });
   }else if (data.message == answer){
     // Announce winner!
     $(".winner-name").text(data.from);
+    $(".winner-img").attr("src", data.image);
+    $(".question-cont").slideUp(function(){
+      $(".winner-cont").slideDown();
+    });
+    setTimeout(function(){$(".winner-cont").slideUp()}, 10000);
   }
 })
 
 function TriviaDebugger (){
   this.start = function(){
-    console.log("asdas");
-    TA.twitch.chat.emit('say', {message: "!trivia", from: "TestUser"});
+    TA.twitch.chat.emit('say', { message: "!trivia", from: "TestUser" });
   }
   this.answer = function(){
     console.warn(answer);
-    TA.twitch.chat.emit('say', {message: answer, from: "TestUser"});
+    TA.twitch.chat.emit('say', { message: answer, from: "TestUser", image: "https://pbs.twimg.com/profile_images/557227374236794881/7qhBtYpT.png" });
   }
 }
+
+var triviadebugger = new TriviaDebugger;
+
 // TO ADD:
 // - Chat can intiate questions multiple times
 // - Add winner's image
