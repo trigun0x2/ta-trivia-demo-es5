@@ -24,7 +24,7 @@ TA.twitch.chat.on('say', function(data){
     $(".question-cont").slideUp(function(){
       $(".winner-cont").slideDown();
     });
-    setTimeout(function(){$(".winner-cont").slideUp()}, 10000);
+    setTimeout(function(){$(".winner-cont").slideUp()}, 10001);
   }
 })
 
