@@ -1,6 +1,10 @@
 body{
   font-family: 'Open Sans', sans-serif;
 }
+.trivia-cont{
+  background-color: white;
+  border-radius: 3px;
+}
 /* Trivia Section  */
 .question-cont{
   display: none;

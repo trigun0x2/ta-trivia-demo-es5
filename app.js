@@ -1,10 +1,11 @@
 var TA = window.TA;
 var answer;
+var trivaStarted = false;
 
 // Initiate listener on Twitch chat messages
 TA.twitch.chat.on('say', function(data){
   // Check if a new trivia is initiated
-  if (data.message == '!trivia'){
+  if (data.message == '!trivia' && !trivaStarted){
     $.get("http://jservice.io/api/random")
       .done(function(res){
         // Clear current question and also winner
@@ -16,6 +17,7 @@ TA.twitch.chat.on('say', function(data){
         });
         // Announce new trivia
         TA.twitch.chat.say(question);
+        trivaStarted = true;
       });
   }else if (data.message == answer){
     // Announce winner!
@@ -25,6 +27,7 @@ TA.twitch.chat.on('say', function(data){
       $(".winner-cont").slideDown();
     });
     setTimeout(function(){$(".winner-cont").slideUp()}, 10001);
+    trivaStarted = false;
   }
 })
 
